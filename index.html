@@ -1,158 +1,185 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>婚礼请柬</title>
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="pragma" content="no-cache">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #fdf6f0;
-            font-family: 'Helvetica Neue', sans-serif;
-            text-align: center;
-        }
-        .invitation {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .buttons a, .buttons button {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 24px;
-            background-color: #d6336c;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-        .countdown {
-            margin-top: 30px;
-            font-size: 28px;
-            font-weight: bold;
-            color: #d6336c;
-            font-family: 'Brush Script MT', cursive;
-        }
-        .message-board {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .message-board h3 {
-            margin-bottom: 10px;
-        }
-        .message-board ul {
-            list-style: none;
-            padding: 0;
-        }
-        .message-board li {
-            background-color: #fff;
-            margin: 10px 0;
-            padding: 12px;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            opacity: 0;
-            animation: fadeIn 0.6s ease forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        audio {
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>婚礼请柬</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fdf6f0;
+      font-family: 'Helvetica Neue', sans-serif;
+      text-align: center;
+    }
+    .invitation {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .countdown {
+      margin-top: 30px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #d6336c;
+      font-family: 'Brush Script MT', cursive;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    .buttons a, .buttons button {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 24px;
+      background-color: #d6336c;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    .rsvp-form {
+      margin-top: 20px;
+    }
+    .rsvp-form input, .rsvp-form textarea {
+      width: 80%;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .message-board {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .message-board h3 {
+      margin-bottom: 10px;
+    }
+    .message-board ul {
+      list-style: none;
+      padding: 0;
+    }
+    .message-board li {
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    audio {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <div class="invitation">
-        <img src="invitation.png" alt="婚礼请柬">
+  <div class="invitation">
+    <img src="invitation.png" alt="婚礼请柬" />
+    <div class="countdown" id="countdown"></div>
 
-        <div class="countdown" id="countdown"></div>
-
-        <div class="buttons">
-            <button onclick="handleRSVP()">RSVP 回复</button>
-            https://www.amap.com/search?query=西安皇后大酒店
-        </div>
+    <div class="buttons">
+      https://uri.amap.com/navigation?to=西安皇后大酒店
     </div>
 
-    <div class="message-board">
-        <h3>留言板</h3>
-        <ul id="messages"></ul>
+    <div class="rsvp-form">
+      <input type="text" id="name" placeholder="您的姓名" />
+      <textarea id="message" rows="3" placeholder="您的祝福或留言"></textarea>
+      <button onclick="submitRSVP()">RSVP 回复</button>
     </div>
+  </div>
 
-    <audio autoplay loop>
-        https://cdn.pixabay.com/audio/2023/03/15/audio_303830.mp3
-        您的浏览器不支持音频播放。
-    </audio>
+  <div class="message-board">
+    <h3>留言板</h3>
+    <ul id="messages"></ul>
+  </div>
 
-    <script>
-        // 倒计时功能（目标时间：北京时间 2025-08-27 12:00）
-        const countdownElement = document.getElementById("countdown");
-        const targetDate = new Date("2025-08-27T04:00:00Z"); // 北京时间 = UTC+8
+  <audio id="bg-music" autoplay loop muted playsinline>
+    <source src="https://cdn.pixabay.com/audio/2023/03/15/audio_303
+  </audio>
 
-        function updateCountdown() {
-            const now = new Date();
-            const diff = targetDate - now;
+  <script>
+    // 自动播放音乐（兼容移动设备）
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('bg-music');
+      audio.muted = false;
+      audio.play().catch(() => {
+        // 用户交互后再播放
+        document.body.addEventListener('click', () => {
+          audio.play();
+        }, { once: true });
+      });
+    });
 
-            if (diff <= 0) {
-                countdownElement.textContent = "婚礼进行中！";
-                return;
-            }
+    // 倒计时功能
+    const countdownElement = document.getElementById("countdown");
+    const targetDate = new Date("2025-08-27T04:00:00Z");
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diff / (1000 * 60)) % 60);
-            const seconds = Math.floor((diff / 1000) % 60);
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
 
-            countdownElement.textContent = `距离婚礼还有 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
-        }
+      if (diff <= 0) {
+        countdownElement.textContent = "婚礼进行中！";
+        return;
+      }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
 
-        // RSVP 留言功能
-        function handleRSVP() {
-            const name = prompt("请输入您的姓名：");
-            const message = prompt("请输入您的祝福或留言：");
+      countdownElement.textContent = `距离婚礼还有 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+    }
 
-            if (name && message) {
-                const messagesList = document.getElementById("messages");
-                const li = document.createElement("li");
-                li.textContent = `${name}：${message}`;
-                messagesList.appendChild(li);
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-                // 保存到 localStorage
-                const savedMessages = JSON.parse(localStorage.getItem("weddingMessages") || "[]");
-                savedMessages.push({ name, message });
-                localStorage.setItem("weddingMessages", JSON.stringify(savedMessages));
-            }
-        }
+    // RSVP 留言功能
+    function submitRSVP() {
+      const name = document.getElementById("name").value.trim();
+      const message = document.getElementById("message").value.trim();
 
-        // 页面加载时恢复留言
-        window.onload = function() {
-            const savedMessages = JSON.parse(localStorage.getItem("weddingMessages") || "[]");
-            const messagesList = document.getElementById("messages");
-            savedMessages.forEach(msg => {
-                const li = document.createElement("li");
-                li.textContent = `${msg.name}：${msg.message}`;
-                messagesList.appendChild(li);
-            });
-        };
-    </script>
+      if (name && message) {
+        const messagesList = document.getElementById("messages");
+        const li = document.createElement("li");
+        li.textContent = `${name}.appendChild(li);
+
+        const savedMessages = JSON.parse(localStorage.getItem("weddingMessages") || "[]");
+        savedMessages.push({ name, message });
+        localStorage.setItem("weddingMessages", JSON.stringify(savedMessages));
+
+        document.getElementById("name").value = "";
+        document.getElementById("message").value = "";
+      }
+    }
+
+    // 页面加载时恢复留言
+    window.onload = function () {
+      const savedMessages = JSON.parse(localStorage.getItem("weddingMessages") || "[]");
+      const messagesList = document.getElementById("messages");
+      savedMessages.forEach(msg => {
+        const li = document.createElement("li");
+        li.textContent = `${msg.name}：${msg.message}`;
+        messagesList.appendChild(li);
+      });
+    };
+  </script>
 </body>
 </html>
