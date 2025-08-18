@@ -29,21 +29,6 @@
       color: #d6336c;
       font-family: 'Brush Script MT', cursive;
     }
-    .buttons {
-      margin-top: 20px;
-    }
-    .buttons a, .buttons button {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 24px;
-      background-color: #d6336c;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-    }
     .rsvp-form {
       margin-top: 20px;
     }
@@ -53,6 +38,28 @@
       margin: 5px 0;
       border-radius: 6px;
       border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .rsvp-form button {
+      margin-top: 10px;
+      padding: 12px 24px;
+      background-color: #d6336c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .map-button {
+      margin-top: 30px;
+    }
+    .map-button a {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #d6336c;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
       font-size: 16px;
     }
     .message-board {
@@ -100,14 +107,20 @@
       <button onclick="submitRSVP()">RSVP 回复</button>
     </div>
 
-    <div class="buttons">
-      <a href="https://uri.amap.com/navigation?to=西安皇冠大酒店" target="_blank">出发！</ss="message-board">
+    <div class="map-button">
+      https://uri.amap.com/navigation?to=西安皇冠大酒店
+    </div>
+  </div>
+
+  <div class="message-board">
     <h3>留言板</h3>
     <ul id="messages"></ul>
   </div>
 
   <audio id="bg-music" autoplay loop playsinline>
-    <source src="https://cdn.pixabay.com/download/audio/2023/03/15/audio_303830.mp3?filename=romantic-wedding-background-music-303830.mp3" type="audioio>
+    https://cdn.pixabay.com/download/audio/2023/03/15/audio_303830.mp3?filename=romantic-wedding-background-music-303830.mp3
+    您的浏览器不支持音频播放。
+  </audio>
 
   <script>
     // 自动播放音乐（兼容移动设备）
