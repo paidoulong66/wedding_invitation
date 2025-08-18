@@ -101,19 +101,19 @@
     </div>
 
     <div class="buttons">
-      <a href="https://uri.amap.com/navigation?to=西安皇冠/div>
-  </div>
-
-  <div class="message-board">
+      <a href="https://uri.amap.com/navigation?to=西安皇冠大酒店" target="_blank">出发！</ss="message-board">
     <h3>留言板</h3>
     <ul id="messages"></ul>
   </div>
 
   <audio id="bg-music" autoplay loop playsinline>
-    <source src="https://cdn.pixabay.com/download/audio/2023/03/15/audio_303830.mp3?filename=romantic-wedding-background-music-303830.mp3" type="audio/mpeg  <script>
+    <source src="https://cdn.pixabay.com/download/audio/2023/03/15/audio_303830.mp3?filename=romantic-wedding-background-music-303830.mp3" type="audioio>
+
+  <script>
     // 自动播放音乐（兼容移动设备）
     document.addEventListener('DOMContentLoaded', () => {
       const audio = document.getElementById('bg-music');
+      audio.muted = false;
       audio.play().catch(() => {
         document.body.addEventListener('click', () => {
           audio.play();
@@ -137,7 +137,9 @@
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000)      countdownElement.textContent = `距离婚礼还有 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownElement.textContent = `距离婚礼还有 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
     }
 
     setInterval(updateCountdown, 1000);
