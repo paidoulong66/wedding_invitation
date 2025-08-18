@@ -94,15 +94,14 @@
     <img src="invitation.png" alt="婚礼请柬" />
     <div class="countdown" id="countdown"></div>
 
-    <div class="buttons">
-      https://uri.amap.com/navigation?to=西安皇后大酒店
-    </div>
-
     <div class="rsvp-form">
       <input type="text" id="name" placeholder="您的姓名" />
       <textarea id="message" rows="3" placeholder="您的祝福或留言"></textarea>
       <button onclick="submitRSVP()">RSVP 回复</button>
     </div>
+
+    <div class="buttons">
+      <a href="https://uri.amap.com/navigation?to=西安皇冠/div>
   </div>
 
   <div class="message-board">
@@ -110,17 +109,12 @@
     <ul id="messages"></ul>
   </div>
 
-  <audio id="bg-music" autoplay loop muted playsinline>
-    <source src="https://cdn.pixabay.com/audio/2023/03/15/audio_303
-  </audio>
-
-  <script>
+  <audio id="bg-music" autoplay loop playsinline>
+    <source src="https://cdn.pixabay.com/download/audio/2023/03/15/audio_303830.mp3?filename=romantic-wedding-background-music-303830.mp3" type="audio/mpeg  <script>
     // 自动播放音乐（兼容移动设备）
     document.addEventListener('DOMContentLoaded', () => {
       const audio = document.getElementById('bg-music');
-      audio.muted = false;
       audio.play().catch(() => {
-        // 用户交互后再播放
         document.body.addEventListener('click', () => {
           audio.play();
         }, { once: true });
@@ -143,9 +137,7 @@
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      countdownElement.textContent = `距离婚礼还有 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+      const seconds = Math.floor((diff / 1000)      countdownElement.textContent = `距离婚礼还有 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
     }
 
     setInterval(updateCountdown, 1000);
@@ -159,7 +151,8 @@
       if (name && message) {
         const messagesList = document.getElementById("messages");
         const li = document.createElement("li");
-        li.textContent = `${name}.appendChild(li);
+        li.textContent = `${name}：${message}`;
+        messagesList.appendChild(li);
 
         const savedMessages = JSON.parse(localStorage.getItem("weddingMessages") || "[]");
         savedMessages.push({ name, message });
