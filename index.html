@@ -23,7 +23,9 @@
         img {
             width: 100%;
             height: auto;
-            border-radius:        .buttons a, .buttons button {
+            border-radius: 8px;
+        }
+        .buttons a, .buttons button {
             display: inline-block;
             margin: 10px;
             padding: 12px 24px;
@@ -37,8 +39,10 @@
         }
         .countdown {
             margin-top: 30px;
-            font-size: 20px;
-            color: #333;
+            font-size: 28px;
+            font-weight: bold;
+            color: #d6336c;
+            font-family: 'Brush Script MT', cursive;
         }
         .message-board {
             margin-top: 40px;
@@ -77,10 +81,13 @@
 <body>
     <div class="invitation">
         <img src="invitation.png" alt="婚礼请柬">
-        <div class="buttons">
-            <a href="https://www.amap.com/search?query=西安皇后大酒店" target="_ onclick="handleRSVP()">RSVP 回复</button>
-        </div>
+
         <div class="countdown" id="countdown"></div>
+
+        <div class="buttons">
+            <button onclick="handleRSVP()">RSVP 回复</button>
+            https://www.amap.com/search?query=西安皇后大酒店
+        </div>
     </div>
 
     <div class="message-board">
@@ -89,7 +96,8 @@
     </div>
 
     <audio autoplay loop>
-        https://cdn.pixabay.com/download/audio/2023/03/15/audio_303830.mp3?filename=romantic-wedding-background-music-303830.mp3
+        https://cdn.pixabay.com/audio/2023/03/15/audio_303830.mp3
+        您的浏览器不支持音频播放。
     </audio>
 
     <script>
@@ -127,8 +135,24 @@
                 const li = document.createElement("li");
                 li.textContent = `${name}：${message}`;
                 messagesList.appendChild(li);
+
+                // 保存到 localStorage
+                const savedMessages = JSON.parse(localStorage.getItem("weddingMessages") || "[]");
+                savedMessages.push({ name, message });
+                localStorage.setItem("weddingMessages", JSON.stringify(savedMessages));
             }
         }
+
+        // 页面加载时恢复留言
+        window.onload = function() {
+            const savedMessages = JSON.parse(localStorage.getItem("weddingMessages") || "[]");
+            const messagesList = document.getElementById("messages");
+            savedMessages.forEach(msg => {
+                const li = document.createElement("li");
+                li.textContent = `${msg.name}：${msg.message}`;
+                messagesList.appendChild(li);
+            });
+        };
     </script>
 </body>
 </html>
