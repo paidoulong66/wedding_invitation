@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="pragma" content="no-cache
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>婚礼请柬</title>
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
     <style>
         body {
             margin: 0;
@@ -38,6 +38,11 @@
             border-radius: 6px;
             font-size: 16px;
         }
+        .countdown {
+            margin-top: 30px;
+            font-size: 20px;
+            color: #333;
+        }
         audio {
             display: none;
         }
@@ -45,16 +50,39 @@
 </head>
 <body>
     <div class="invitation">
-        <img src="Image_3.png" alt="婚礼请柬">
+        <img src="invitation.png" alt="婚礼请柬">
         <div class="buttons">
-            <a href="https://map.baidu.com/search/西安皇后大酒店" target="_blank">查看地图</ale@example.com?subject=婚礼出席回复&body=我将出席您的婚礼！">RSVP 回</a>
+            <a href="https://www.amap.com/search?query=西安皇冠大酒店    <a href="mailto:example@example.com?subject=婚礼出席回复&body=我将出席您的婚礼！">RSVP 回复</a>
         </div>
+        <div class="countdown" id="countdown"></div>
     </div>
     <audio autoplay loop>
-        <source src="https://cdn.pixabay.com/download/audio/2023/03/15/audio_303830.mp3?filename=romantic-wedding-background-music-303830.mp3" type="audio/mpegdio>
+        <source src="https://cdn.pixabay.com/download/audio/2023/03/15/audio_303830.mp3?filename=romantic-wedding-background-music-303830.mp3" type="。
+    </audio>
+    <script>
+        // 倒计时功能（目标时间：北京时间 2025-08-27 12:00）
+        const countdownElement = document.getElementById("countdown");
+        const targetDate = new Date("2025-08-27T04:00:00Z"); // 北京时间 = UTC+8
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                countdownElement.textContent = "婚礼进行中！";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            countdownElement.textContent = `距离婚礼还有 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
 </body>
 </html>
-
-
-
-
