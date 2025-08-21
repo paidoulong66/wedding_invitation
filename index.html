@@ -3,9 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>婚礼请柬</title>
-  <style>
-    body {
+  <title>我们的婚礼邀请函</title>
+
+  <!-- 微信分享卡片信息 -->
+  <meta name="title" content="我们的婚礼邀请函" />
+  <meta name="description" content="诚邀您参加我们的婚礼，一起见证幸福时刻。" />
+  <meta name="image" content="https://paidoulong66.github.io/wedding_invitation/invitation.png" />
+
+  <!-- Open Graph 标签 -->
+  <meta property="og:title" content="我们的婚礼邀请函" />
+  <meta property="og:description" content="诚邀您参加我们的婚礼，一起见证幸福时刻。" />
+  <meta property="og:image" content="https://paidoulong66.github.io/wedding_invitation/invitation.png" />
+  <meta property="og:url" content="https://paidoulong66.github.io/wedding_invitation/" />
+
+  {
       margin: 0;
       padding: 0;
       background-color: #fdf6f0;
@@ -164,7 +175,8 @@
       const message = document.getElementById("message").value.trim();
 
       if (name && message) {
-        const messagesList = document.getElementById        const li = document.createElement("li");
+        const messagesList = document.getElementById("messages");
+        const li = document.createElement("li");
         li.textContent = `${name}：${message}`;
         messagesList.appendChild(li);
 
