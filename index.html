@@ -2,31 +2,37 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>我们的婚礼邀请函</title>
 
-  <!-- 微信分享卡片信息 -->
+  <!-- Meta tags for sharing -->
   <meta name="title" content="我们的婚礼邀请函" />
   <meta name="description" content="诚邀您参加我们的婚礼，一起见证幸福时刻。" />
   <meta name="image" content="https://paidoulong66.github.io/wedding_invitation/invitation.png" />
-
-  <!-- Open Graph 标签 -->
   <meta property="og:title" content="我们的婚礼邀请函" />
   <meta property="og:description" content="诚邀您参加我们的婚礼，一起见证幸福时刻。" />
   <meta property="og:image" content="https://paidoulong66.github.io/wedding_invitation/invitation.png" />
   <meta property="og:url" content="https://paidoulong66.github.io/wedding_invitation/" />
 
-  {
+  <!-- turn.js and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></ttps://www.turnjs.com/lib/turn.min.js   body {
       margin: 0;
       padding: 0;
       background-color: #fdf6f0;
       font-family: 'Helvetica Neue', sans-serif;
       text-align: center;
     }
-    .invitation {
-      max-width: 600px;
-      margin: 0 auto;
+    #flipbook {
+      width: 90%;
+      max-width: 800px;
+      height: 600px;
+      margin: 40px auto;
+    }
+    .page {
+      background-color: white;
       padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     img {
       width: 100%;
@@ -34,14 +40,11 @@
       border-radius: 8px;
     }
     .countdown {
-      margin-top: 30px;
-      font-size: 28px;
+      margin-top: 20px;
+      font-size: 24px;
       font-weight: bold;
       color: #d6336c;
       font-family: 'Brush Script MT', cursive;
-    }
-    .rsvp-form {
-      margin-top: 20px;
     }
     .rsvp-form input, .rsvp-form textarea {
       width: 80%;
@@ -51,7 +54,7 @@
       border: 1px solid #ccc;
       font-size: 16px;
     }
-    .rsvp-form button {
+    .rsvp-form button, .map-button button {
       margin-top: 10px;
       padding: 12px 24px;
       background-color: #d6336c;
@@ -61,29 +64,11 @@
       font-size: 16px;
       cursor: pointer;
     }
-    .map-button {
-      margin-top: 30px;
-    }
-    .map-button button {
-      padding: 12px 24px;
-      background-color: #d6336c;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-    }
     .message-board {
-      margin-top: 40px;
-      padding: 20px;
+      margin-top: 20px;
+      padding: 10px;
       background-color: #fff;
       border-radius: 8px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .message-board h3 {
-      margin-bottom: 10px;
     }
     .message-board ul {
       list-style: none;
@@ -108,98 +93,103 @@
   </style>
 </head>
 <body>
-  <div class="invitation">
-    <img src="invitation.png" alt="婚礼请柬" />
-    <div class="countdown" id="countdown"></div>
 
+<div id="flipbook">
+  <div class="page">
+    <img src="https://paidoulong66.github.io/wedding_invitation/invitationdiv class="countdown" id="countdown"></div>
+  </div>
+  <div class="page">
     <div class="rsvp-form">
+      <h3>RSVP 留言</h3>
       <input type="text" id="name" placeholder="您的姓名" />
       <textarea id="message" rows="3" placeholder="您的祝福或留言"></textarea>
       <button onclick="submitRSVP()">RSVP 回复</button>
     </div>
-
+  </div>
+  <div class="page">
     <div class="map-button">
-      <button onclick="window.open('https://m.amap.com/poi/detail?__p=B001D09HQM%2C34.26014380396236%2C108.98881137371063%2C%E8%A5%BF%E5%AE%89%E7%9A%87%E5%90%8E%E5%A4%A7%E9%85%92%E5%BA%97%2C%E5%85%B4%E5%BA%86%E8%B7%AF45%E5%8F%B7&src=app_share&userRelationToken=fc7370ef7e6911f0909b00163e1ab59e1&share_type=url&share_from=poi_poi&share_from_type=AJX&share_bizParams=%7B%22poiid%22%3A%22B001D09HQM%22%2C%22name%22%3A%22%E8%A5%BF%E5%AE%89%E7%9A%87%E5%90%8E%E5%A4%A7%E9%85%92%E5%BA%97%22%2C%22address%22%3A%22%E5%85%B4%E5%BA%86%E8%B7%AF45%E5%8F%B7%22%2C%22new_type%22%3A%22100103%7C050000%22%2C%22atag_cid%22%3A%22621088%3B621093%3B621095%7C621088%3B621108%22%2C%22x%22%3A215485676%2C%22y%22%3A106997167%2C%22lon%22%3A%22108.988812%22%2C%22lat%22%3A%2234.260144%22%2C%22trigger%22%3A%22click%22%7D&share_lastClickSpm=amap.27854080.share.share_entrance&share_bid=ocbj1rdjeecf46j6apfg35sfstclebc3036803e&poiid=B001D09HQM', '_blank')">出发！</button>
+      <h3>导航到婚礼地点</h3>
+      <button onclick="window.open('https://uri.amap.com/navigation?to=西安皇冠大酒店', '_blank')">出发！</button>
     </div>
   </div>
-
-  <div class="message-board">
-    <h3>留言板</h3>
-    <ul id="messages"></ul>
+  <div class="page">
+    <div class="message-board">
+      <h3>留言板</h3>
+      <ul id="messages"></ul>
+    </div>
   </div>
+</div>
 
-  <audio id="bg-music" autoplay loop playsinline>
-    https://cdn.pixabay.com/download/audio/2023/03/15/audio_303830.mp3?filename=romantic-wedding-background-music-303830.mp3
-    您的浏览器不支持音频播放。
-  </audio>
+<audio id="bg-music" autoplay loop playsinline>
+  <ttps://cdn.pixabay.com/download/audio/2023/03/15/audio_303830.mp3?filename=romantic-wedding-background-music-303830.mp3
+  您的浏览器不支持音频播放。
+</audio>
 
-  <script>
-    // 自动播放音乐（兼容移动设备）
-    document.addEventListener('DOMContentLoaded', () => {
-      const audio = document.getElementById('bg-music');
-      audio.muted = false;
-      audio.play().catch(() => {
-        document.body.addEventListener('click', () => {
-          audio.play();
-        }, { once: true });
-      });
+<script>
+  $(document).ready(function(){
+    $("#flipbook").turn({
+      width: 800,
+      height: 600,
+      autoCenter: true
     });
+  });
 
-    // 倒计时功能
-    const countdownElement = document.getElementById("countdown");
-    const targetDate = new Date("2025-08-27T04:00:00Z");
+  document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('bg-music');
+    audio.muted = false;
+    audio.play().catch(() => {
+      document.body.addEventListener('click', () => {
+        audio.play();
+      }, { once: true });
+    });
+  });
 
-    function updateCountdown() {
-      const now = new Date();
-      const diff = targetDate - now;
+  const countdownElement = document.getElementById("countdown");
+  const targetDate = new Date("2025-08-27T04:00:00Z");
 
-      if (diff <= 0) {
-        countdownElement.textContent = "婚礼进行中！";
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      countdownElement.textContent = `距离婚礼还有 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+  function updateCountdown() {
+    const now = new Date();
+    const diff = targetDate - now;
+    if (diff <= 0) {
+      countdownElement.textContent = "婚礼进行中！";
+      return;
     }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+    countdownElement.textContent = `距离婚礼还有 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+  }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
 
-    // RSVP 留言功能
-    function submitRSVP() {
-      const name = document.getElementById("name").value.trim();
-      const message = document.getElementById("message").value.trim();
-
-      if (name && message) {
-        const messagesList = document.getElementById("messages");
-        const li = document.createElement("li");
-        li.textContent = `${name}：${message}`;
-        messagesList.appendChild(li);
-
-        const savedMessages = JSON.parse(localStorage.getItem("weddingMessages") || "[]");
-        savedMessages.push({ name, message });
-        localStorage.setItem("weddingMessages", JSON.stringify(savedMessages));
-
-        document.getElementById("name").value = "";
-        document.getElementById("message").value = "";
-      }
-    }
-
-    // 页面加载时恢复留言
-    window.onload = function () {
-      const savedMessages = JSON.parse(localStorage.getItem("weddingMessages") || "[]");
+  function submitRSVP() {
+    const name = document.getElementById("name").value.trim();
+    const message = document.getElementById("message").value.trim();
+    if (name && message) {
       const messagesList = document.getElementById("messages");
-      savedMessages.forEach(msg => {
-        const li = document.createElement("li");
-        li.textContent = `${msg.name}：${msg.message}`;
-        messagesList.appendChild(li);
-      });
-    };
-  </script>
+      const li = document.createElement("li");
+      li.textContent = `${name}：${message}`;
+      messagesList.appendChild(li);
+      const savedMessages = JSON.parse(localStorage.getItem("weddingMessages") || "[]");
+      savedMessages.push({ name, message });
+      localStorage.setItem("weddingMessages", JSON.stringify(savedMessages));
+      document.getElementById("name").value = "";
+      document.getElementById("message").value = "";
+    }
+  }
+
+  window.onload = function () {
+    const savedMessages = JSON.parse(localStorage.getItem("weddingMessages") || "[]");
+    const messagesList = document.getElementById("messages");
+    savedMessages.forEach(msg => {
+      const li = document.createElement("li");
+      li.textContent = `${msg.name}：${msg.message}`;
+      messagesList.appendChild(li);
+    });
+  };
+</script>
+
 </body>
 </html>
-
