@@ -53,14 +53,14 @@
     .map-button {
       margin-top: 30px;
     }
-    .map-button a {
-      display: inline-block;
+    .map-button button {
       padding: 12px 24px;
       background-color: #d6336c;
       color: white;
-      text-decoration: none;
+      border: none;
       border-radius: 6px;
       font-size: 16px;
+      cursor: pointer;
     }
     .message-board {
       margin-top: 40px;
@@ -108,7 +108,7 @@
     </div>
 
     <div class="map-button">
-      https://uri.amap.com/navigation?to=西安皇冠大酒店
+      <button onclick="window.open('https://uri.amap.com/navigation?to=西安皇冠大酒店', '_blank')">出发！</button>
     </div>
   </div>
 
@@ -118,8 +118,7 @@
   </div>
 
   <audio id="bg-music" autoplay loop playsinline>
-    https://cdn.pixabay.com/download/audio/2023/03/15/audio_303830.mp3?filename=romantic-wedding-background-music-303830.mp3
-    您的浏览器不支持音频播放。
+    <source src="https://cdn.pixabay.com/download/audio/2023/03/15/audio_303830.mp3?filename=romantic-wedding-background-music-303830.mp3"频播放。
   </audio>
 
   <script>
